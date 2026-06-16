@@ -10,7 +10,7 @@ const apiUrlInput = document.getElementById("api-url");
 const apiEndpointInput = document.getElementById("api-endpoint");
 
 const STORAGE_KEY = "serenity_settings";
-const defaults = { apiUrl: "https://surprising-beauty-production-34f3.up.railway.app", endpoint: "/chat" };
+const defaults = { apiUrl: "http://34.234.88.19:7860", endpoint: "/chat" };
 
 function loadSettings() {
   try {
