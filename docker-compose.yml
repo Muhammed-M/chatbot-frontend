@@ -1,0 +1,19 @@
+name: serenity
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${FRONTEND_IMAGE:-serenity-frontend:latest}
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    image: ${BACKEND_IMAGE:-mento-backend:latest}
+    ports:
+      - "${BACKEND_PORT:-7860}:7860"
+    restart: unless-stopped
