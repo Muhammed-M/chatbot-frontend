@@ -10,7 +10,7 @@ const apiUrlInput = document.getElementById("api-url");
 const apiEndpointInput = document.getElementById("api-endpoint");
 
 const STORAGE_KEY = "serenity_settings";
-const defaults = { apiUrl: "", endpoint: "/api/chat" };
+const defaults = { apiUrl: "https://trickery-reimburse-wad.ngrok-free.dev", endpoint: "/chat" };
 
 function loadSettings() {
   try {
@@ -25,13 +25,6 @@ function saveSettings(s) {
 }
 
 let settings = loadSettings();
-
-function feedbackEndpoint() {
-  const endpoint = settings.endpoint || defaults.endpoint;
-  return endpoint.endsWith("/chat")
-    ? endpoint.slice(0, -"/chat".length) + "/feedback"
-    : "/feedback";
-}
 
 // ── Settings panel ──
 
@@ -162,7 +155,7 @@ async function sendFeedback(btn, userMessage, botResponse) {
   btn.classList.add("selected");
 
   try {
-    await fetch(settings.apiUrl + feedbackEndpoint(), {
+    await fetch(settings.apiUrl + "/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
