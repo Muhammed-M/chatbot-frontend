@@ -159,9 +159,9 @@ async function sendFeedback(btn, userMessage, botResponse) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        vote,
-        user_message: userMessage,
-        bot_response: botResponse,
+        feedback: vote,           // Changed from vote
+        query: userMessage,       // Changed from user_message
+        response: botResponse,    // Changed from bot_response
       }),
     });
   } catch {}
